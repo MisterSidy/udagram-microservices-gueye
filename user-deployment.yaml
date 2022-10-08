@@ -12,7 +12,7 @@ metadata:
 
 spec:
 
-  replicas: 1
+  replicas: 2
 
   selector:
 
@@ -33,6 +33,7 @@ spec:
       containers:
 
       - name: backend-user
+
         image: misterzoo/udagram-api-user:v1
 
         ports:
@@ -43,10 +44,4 @@ spec:
             name: env-configmap
          - secretRef:
             name: env-pg-secrets
-#       volumeMounts:
-#          - mountPath: "/root/.aws/"
-#             name: aws-creds
-#     volumes:
-#     - name: aws-creds
-#       configMap:
-#         name: aws-creds
+

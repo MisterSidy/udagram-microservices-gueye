@@ -3,32 +3,19 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-
   name: backend-feed
-
   labels:
-
     app: backend-feed
-
 spec:
-
-  replicas: 1
-
+  replicas: 
   selector:
-
     matchLabels:
-
       app: backend-feed
   template:
-
     metadata:
-
       labels:
-
         app: backend-feed
-
     spec:
-
       containers:
       - name: backend-feed
         image: misterzoo/udagram-api-feed:v1
@@ -39,10 +26,4 @@ spec:
              name: env-configmap
           - secretRef:
              name: env-pg-secrets
-#        volumeMounts:
-#          - mountPath: "/root/.aws/"
-#             name: aws-creds
-#     volumes:
-#     - name: aws-creds
-#       configMap:
-#         name: aws-creds
+    
