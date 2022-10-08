@@ -7,7 +7,7 @@ metadata:
   labels:
     app: backend-feed
 spec:
-  replicas: 
+  replicas: 2
   selector:
     matchLabels:
       app: backend-feed
@@ -21,9 +21,22 @@ spec:
         image: misterzoo/udagram-api-feed:v1
         ports:
           - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
         envFrom:
           - configMapRef:
              name: env-configmap
           - secretRef:
              name: env-pg-secrets
+#        volumeMounts:              
+#           - mounthPath: /root/.aws/ 
+#             name: aws-creds
+#      volumes:     
+#        - name: aws-creds
+#          configMap:
+#           name: aws-creds
+
     
